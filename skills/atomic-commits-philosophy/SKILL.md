@@ -18,15 +18,14 @@ After completing ANY unit of work — commit it immediately and separately. Don'
 
 ## What Triggers a Commit
 
-| Completed work | Commit immediately |
-|----------------|-------------------|
-| Added a function | `feat(module): add functionName` |
-| Fixed a bug | `fix(scope): resolve issue description` |
-| Refactored code | `refactor(scope): improve/simplify X` |
-| Updated deps | `chore(deps): update X to version` |
-| Added/fixed test | `test(scope): add/fix tests for X` |
-| Changed config | `chore(config): update X setting` |
-| Updated docs | `docs: describe change` |
+| Completed work | Example |
+|----------------|---------|
+| Feature works end-to-end | `feat(auth): add password reset flow` |
+| Bug is fixed and verified | `fix(cart): prevent duplicate items` |
+| Refactor complete and tests pass | `refactor(api): extract validation logic` |
+| Dependencies updated | `chore(deps): upgrade react to 18.2` |
+| Tests added for a feature | `test(auth): add password reset tests` |
+| Config change applied | `chore: configure eslint rules` |
 
 ## Commit Flow
 
@@ -69,15 +68,21 @@ test(auth): add tests for token expiration
 
 ## Handling Large Tasks
 
-Working on a big feature? Break it down:
+Working on a big feature? Break by **logical boundaries**, not layers:
 
-1. `feat(users): add User model schema`
-2. `feat(users): add createUser service`
-3. `feat(users): add POST /users endpoint`
-4. `test(users): add integration tests`
-5. `docs(api): document users endpoints`
+```
+# WRONG — splitting by layer
+feat(users): add User model
+feat(users): add user service
+feat(users): add user controller
 
-5 small commits > 1 giant commit.
+# RIGHT — splitting by feature
+feat(users): add user registration
+feat(users): add user profile editing
+feat(users): add password reset
+```
+
+Model + service + controller for one feature = one commit. They belong together.
 
 ## Priority for Format
 
